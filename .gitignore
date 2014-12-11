@@ -3,4 +3,6 @@
 *.pyc
 *.orig
 *.a
-
+Makefile
+*.cmake
+CMakeFiles
