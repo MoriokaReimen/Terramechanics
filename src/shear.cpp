@@ -1,7 +1,7 @@
 #include "shear.hpp"
 using std::tan;
 using std::exp;
-using std::min;
+using std::fmin;
 /*
 *    @detail Maximum shear from Mohr-Coulomb failure criterion
 *    @param [in] p normal stress on the sheared surface
@@ -60,7 +60,7 @@ double getHarnischShear(const double& p, const double& mu, const double& c, cons
 	auto ts = 1.0 - exp(-j/k);
 	auto t1 = c * p * tan(phi);
 	auto t2 = mu * p;
-	auto t_out = min(t1, t2) * ts;
+	auto t_out = fmin(t1, t2) * ts;
 	return t_out;
 }
 
@@ -72,7 +72,8 @@ double getHarnischShear(const double& p, const double& mu, const double& c, cons
 *    @param [in] k shear deformation parameter
 *    @return Shear
 */
-double getJustinShear(const double& p, const double& mu, const double& c, const double& phi, const double& j, const double& k const double& kappa)
+double getJustinShear(const double& p, const double& mu, const double& c, const double& phi, const
+        double& j, const double& k, const double& kappa)
 {
 	auto ts = 1- exp(-j/k);
 	auto t1 = c * p * tan(phi);
