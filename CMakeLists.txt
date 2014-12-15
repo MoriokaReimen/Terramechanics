@@ -10,4 +10,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall")
 
-add_library(terramecha src/bevameter.cpp src/shear.cpp)
+add_library(terramecha STATIC src/bevameter.cpp src/shear.cpp)
+add_library(terramecha-share SHARED src/bevameter.cpp src/shear.cpp)
+set_target_properties(terramecha-share PROPERTIES COMPILE_FLAGS "-DPIC")
