@@ -1,4 +1,4 @@
-#include "strength.hpp"
+#include "shear.hpp"
 using std::tan;
 using std::exp;
 using std::min;
