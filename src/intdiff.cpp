@@ -52,7 +52,9 @@ double integrate(function<double(double)> func, double start, double end, double
     double result, error;
     gsl_function F;
 
-    F.function = [](double x, void* p){ return (*static_cast<func_type*>(p))(x);};
+    F.function = [](double x, void* p) {
+        return (*static_cast<func_type*>(p))(x);
+    };
     F.params = &func;
     gsl_integration_qags(&F, start, end, 0, 1e-7, 1000, w, &result, &error);
     gsl_integration_workspace_free(w);
@@ -70,10 +72,12 @@ double integrate(function<double(double)> func, double start, double end, double
 double differentiate(function<double(double)> func, double x, double max_error)
 {
     typedef function<double(double)> func_type;
-    double result{0}, error{0};
+    double result {0}, error {0};
 
     gsl_function F;
-    F.function = [](double x, void* p){ return (*static_cast<func_type*>(p))(x);};
+    F.function = [](double x, void* p) {
+        return (*static_cast<func_type*>(p))(x);
+    };
     F.params = &func;
 
     gsl_deriv_central(&F, x, max_error, &result, &error);

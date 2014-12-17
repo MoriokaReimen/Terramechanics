@@ -45,7 +45,7 @@ double degToRad(const double& degree)
 {
     return degree * M_PI / 180.0;
 }
-    
+
 /*
 *    @detail Convert radian to degree
 *    @param [in] radian angle in radian

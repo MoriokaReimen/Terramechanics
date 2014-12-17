@@ -46,7 +46,7 @@ using std::fmin;
 */
 double getShearStrength(const double& p, const double& c, const double& phi)
 {
-	return c + p * tan(phi);
+    return c + p * tan(phi);
 }
 
 /*
@@ -60,9 +60,9 @@ double getShearStrength(const double& p, const double& c, const double& phi)
 */
 double getShear(const double& p, const double& c, const double& phi, const double& j, const double& k)
 {
-	auto tm = getShearStrength(p, c, phi);
-	auto ts = 1.0 - exp(-j/k);
-	return tm * ts;
+    auto tm = getShearStrength(p, c, phi);
+    auto ts = 1.0 - exp(-j/k);
+    return tm * ts;
 }
 
 /*
@@ -75,9 +75,9 @@ double getShear(const double& p, const double& c, const double& phi, const doubl
 */
 double getStaticShear(const double& p, const double& mu, const double& j, const double& k)
 {
-	auto ts = 1.0 - exp(j/k);
-	auto t_out = p * mu * ts;
-	return t_out;
+    auto ts = 1.0 - exp(j/k);
+    auto t_out = p * mu * ts;
+    return t_out;
 }
 
 /*
@@ -92,11 +92,11 @@ double getStaticShear(const double& p, const double& mu, const double& j, const 
 */
 double getHarnischShear(const double& p, const double& mu, const double& c, const double& phi, const double& j, const double& k)
 {
-	auto ts = 1.0 - exp(-j/k);
-	auto t1 = c * p * tan(phi);
-	auto t2 = mu * p;
-	auto t_out = fmin(t1, t2) * ts;
-	return t_out;
+    auto ts = 1.0 - exp(-j/k);
+    auto t1 = c * p * tan(phi);
+    auto t2 = mu * p;
+    auto t_out = fmin(t1, t2) * ts;
+    return t_out;
 }
 
 /*
@@ -108,11 +108,11 @@ double getHarnischShear(const double& p, const double& mu, const double& c, cons
 *    @return Shear
 */
 double getJustinShear(const double& p, const double& mu, const double& c, const double& phi, const
-        double& j, const double& k, const double& kappa)
+                      double& j, const double& k, const double& kappa)
 {
-	auto ts = 1- exp(-j/k);
-	auto t1 = c * p * tan(phi);
-	auto t2 = mu * p;
-	auto t_out = (kappa * t1 + (1 - kappa) * t2) * ts;
-	return t_out;
+    auto ts = 1- exp(-j/k);
+    auto t1 = c * p * tan(phi);
+    auto t2 = mu * p;
+    auto t_out = (kappa * t1 + (1 - kappa) * t2) * ts;
+    return t_out;
 }

@@ -43,10 +43,9 @@ using std::exp;
 *    @param [in] soil soil parameters
 *    @param [in] wheel wheel parameters
 */
-WheelSoil::WheelSoil(const Soil& soil, const Wheel& wheel) : soil_{soil}, wheel_{wheel}
-{
+WheelSoil::WheelSoil(const Soil& soil, const Wheel& wheel) : soil_ {soil}, wheel_ {wheel} {
 }
-        
+
 /*
 *    @brief Get the normal stress along the front of the wheel for a given
 *    @param [in] theta angle[radian]
@@ -59,7 +58,7 @@ double WheelSoil::getSigma1_(const double& theta, const double& theta1) const
     double sigma1 = (soil_.k1 + soil_.k2 * wheel_.b) * pow(z / wheel_.b, soil_.n);
     return sigma1;
 }
-        
+
 /*
 *    @brief Get the normal stress along the back of the wheel for a given
 *    @param [in] theta normal stress on the sheared surface
@@ -69,14 +68,14 @@ double WheelSoil::getSigma1_(const double& theta, const double& theta1) const
 *    @return radial stress in the rear region of the soil
 */
 double WheelSoil::getSigma2_(const double& theta, const double& theta1, const double& theta2,
-    const double& theta_m) const
+                             const double& theta_m) const
 {
     double z = (cos(theta1 - ((theta - theta2) / (theta_m - theta2)) * (theta1 - theta_m))
-        - cos(theta1)) * wheel_.r;
+                - cos(theta1)) * wheel_.r;
     double sigma_2 = soil_.k1 * pow(z / wheel_.b, soil_.n); //! k1 is k_eq here
     return sigma_2;
 }
-        
+
 /*
 *    @brief Get the normal stress at any angle on the wheel
 *    @param [in] theta normal stress on the sheared surface
@@ -86,9 +85,9 @@ double WheelSoil::getSigma2_(const double& theta, const double& theta1, const do
 *    @return radial stress in the any region of the soil
 */
 double WheelSoil::getSigma(const double& theta, const double& theta1, const double& theta2,
-        const double& theta_m) const
+                           const double& theta_m) const
 {
-    double sigma{0.0};
+    double sigma {0.0};
     if(theta > theta_m && theta <= theta1)
         sigma = getSigma1_(theta, theta1);
     else if(theta >= theta2 && theta < theta_m)
@@ -96,7 +95,7 @@ double WheelSoil::getSigma(const double& theta, const double& theta1, const doub
 
     return sigma;
 }
-        
+
 /*
 *    @brief Get the shear stress at any angle on the wheel
 *    @param [in] theta normal stress on the sheared surface
@@ -107,11 +106,10 @@ double WheelSoil::getSigma(const double& theta, const double& theta1, const doub
 *    @return radial stress in the any region of the soil
 */
 double WheelSoil::getTau(const double& theta, const double& theta1, const double& theta2,
-        const double& theta_m, const double& slip) const
+                         const double& theta_m, const double& slip) const
 {
-    double tau{0.0};
-    if(theta >= theta2 && theta <= theta1)
-    {
+    double tau {0.0};
+    if(theta >= theta2 && theta <= theta1) {
         double sigma = getSigma(theta, theta1, theta2, theta_m);
         double j = ((theta1 - theta) - (1 - slip) * (sin(theta1) - sin(theta))) * wheel_.r;
         tau = (soil_.c + sigma * tan(soil_.phi)) * (1 - exp(-j / soil_.K));
