@@ -37,7 +37,6 @@
 using std::cos;
 using std::sin;
 using std::exp;
-using std::function;
 
 /*
 *    @brief Constructor of WheelSoil
@@ -119,25 +118,4 @@ double WheelSoil::getTau(const double& theta, const double& theta1, const double
 
     }
     return tau;
-}
-
-/*
-*    @brief Integrate math funciton
-*    @param [in] func math function to integrate
-*    @param [in] start start value of variable
-*    @param [in] end end value of variable
-*    @return result result of integration
-*/
-double integrate(function<double(double)> func, double start, double end)
-{
-    typedef function<double(double)> func_type;
-    gsl_integration_workspace *w
-        = gsl_integration_workspace_alloc(1000);
-    double result, error;
-    gsl_function F;
-
-    F.function = [](double x, void* p){ return (*static_cast<func_type*>(p))(x);};
-    F.params = &func;
-    gsl_integration_qags(&F, start, end, 0, 1e-7, 1000, w, &result, &error);
-    return result;
 }

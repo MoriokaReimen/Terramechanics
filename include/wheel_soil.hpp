@@ -35,7 +35,6 @@
 */
 #include<cmath>
 #include <functional>
-#include <gsl/gsl_integration.h>
 
 using std::function;
 
