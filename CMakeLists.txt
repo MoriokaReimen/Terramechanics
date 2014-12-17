@@ -11,5 +11,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall")
 
 add_library(terramecha STATIC src/bevameter.cpp src/shear.cpp src/angle.cpp src/wheel_soil.cpp)
+target_link_libraries(terramecha gsl)
 add_library(terramecha-share SHARED src/bevameter.cpp src/shear.cpp src/angle.cpp src/wheel_soil.cpp)
 set_target_properties(terramecha-share PROPERTIES COMPILE_FLAGS "-DPIC")
+target_link_libraries(terramecha-share gsl)
