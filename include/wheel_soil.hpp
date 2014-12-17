@@ -81,6 +81,6 @@ public:
                     const double& theta_m) const;
     double getTau(const double& theta, const double& theta1, const double& theta2,
                   const double& theta_m, const double& slip) const;
+    double getTraction(const double& theta1, const double& theta2, const double& theta_m, const double& slip) const;
 };
 
-double integrate(function<double(double)> func, double start, double end);

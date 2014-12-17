@@ -34,9 +34,13 @@
 -----------------------------------------------------------------------------
 */
 #include "wheel_soil.hpp"
+#include "intdiff.hpp"
+
 using std::cos;
 using std::sin;
 using std::exp;
+using std::bind;
+using std::placeholders::_1;
 
 /*
 *    @brief Constructor of WheelSoil
@@ -116,4 +120,12 @@ double WheelSoil::getTau(const double& theta, const double& theta1, const double
 
     }
     return tau;
+}
+
+double WheelSoil::getTraction(const double& theta1, const double& theta2, const double& theta_m, const double& slip) const
+{
+  auto tau_func = bind(&WheelSoil::getTau, this, _1, theta1, theta2, theta_m, slip);
+  auto sigma_func = bind(&WheelSoil::getSigma, this, _1, theta1, theta2, theta_m);
+  auto traction = integrate(tau_func, theta1, theta2) + integrate(sigma_func, theta1, theta2);
+  return traction;
 }
