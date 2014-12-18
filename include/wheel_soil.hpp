@@ -82,5 +82,7 @@ public:
     double getTau(const double& theta, const double& theta1, const double& theta2,
                   const double& theta_m, const double& slip) const;
     double getTraction(const double& theta1, const double& theta2, const double& theta_m, const double& slip) const;
+    double getTorque(const double& theta1, const double& theta2, const double& theta_m, const double& slip) const;
+    double getDrawbar(const double& theta1, const double& theta2, const double& theta_m, const double& slip) const;
 };
 
