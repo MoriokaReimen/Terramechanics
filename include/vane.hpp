@@ -1,6 +1,6 @@
 /**
 -----------------------------------------------------------------------------
-@file    vane.cpp
+@file    vane.hpp
 ----------------------------------------------------------------------------
          @@
        @@@@@@
@@ -17,7 +17,7 @@
    @### ``@@@@@@@@
    ###  ` @@@@@@@
   ###  @  @@@@@                 Creation Date:
- ###    @@@@@               @date Dec. 16. 2014
+ ###    @@@@@               @date Dec. 18. 2014
  /-\     @@
 |   |      %%                      Authors:
  \-/##    %%%%%             @author Kei Nakata
@@ -33,21 +33,8 @@
 @brief fuctions for analyzing vane shear test
 -----------------------------------------------------------------------------
 */
-#include "vane.hpp"
-#define _USE_MATH_DEFINES
-using std::cos;
-using std::sin;
-using std::pow;
+#pragma once
+#include<cmath>
 
-/*
-*    @brief Get max shear
-*    @param [in] m torque[Nm]
-*    @param [in] h height of vane
-*    @param [in] d diameter of vane
-*    @return tau_max max shear on the vane
-*/
-double getTauMax(const double& m, const double& h, const double& d)
-{
-  double tau_max = m / (M_PI * h * d * d / 2 + M_PI / 6 * pow(d, 3));
-  return tau_max;
+double getTauMax(const double& m, const double& h, const double& d);
 }
