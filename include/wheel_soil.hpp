@@ -33,6 +33,7 @@
 @brief Encapsulates Bekker-Wong Theory for Vehicle-Wheel Interactionshear
 -----------------------------------------------------------------------------
 */
+#pragma once
 #include<cmath>
 #include <functional>
 

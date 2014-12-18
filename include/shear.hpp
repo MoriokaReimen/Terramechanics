@@ -1,3 +1,4 @@
+#pragma once
 #include <cmath>
 double getShearStrength(const double& p, const double& c, const double& phi);
 double getShear(const double& p, const double& c, const double& phi, const double& j, const double&

@@ -33,6 +33,7 @@
 @brief integration and differentiation functions
 -----------------------------------------------------------------------------
 */
+#pragma once
 #include <gsl/gsl_integration.h>
 #include <gsl/gsl_deriv.h>
 #include<functional>
