@@ -1,10 +1,51 @@
+/**
+-----------------------------------------------------------------------------
+@file    bevameter.hpp
+----------------------------------------------------------------------------
+         @@
+       @@@@@@
+      @```@@@@
+     @`  `@@@@@@
+   @@`   `@@@@@@@@
+  @@`    `@@@@@@@@@           Tohoku University
+  @` `   `@@@@@@@@@       SPACE ROBOTICS LABORATORY
+  @`` ## `@@@@@@@@@    http://www.astro.mech.tohoku.ac.jp/
+  @` #..#`@@@@@@@@@        Planetary Robotics Group
+  @` #..#`@@@@@@@@@
+  @` ### `@@@@@@@@@          Professor Kazuya Yoshida
+  @` ###``@@@@@@@@@      Associate Professor Keiji Nagatani
+   @### ``@@@@@@@@
+   ###  ` @@@@@@@
+  ###  @  @@@@@                 Creation Date:
+ ###    @@@@@               @date Dec. 24. 2014
+ /-\     @@
+|   |      %%                      Authors:
+ \-/##    %%%%%             @author Kei Nakata
+   #### %%%                 menschenjager.mark.neun@gmail.com
+     ###%%       *
+      ##%%     *****
+       #%%      ***
+        %%     *   *
+         %%
+          %%%%%
+           %%%
+-----------------------------------------------------------------------------
+@brief functions for bevameter experiment
+-----------------------------------------------------------------------------
+*/
+#pragma once
 #include <cmath>
 using std::pow;
 #define _USE_MATH_DEFINES
 
-double bevameter::getShear(const double& M, const double& r_i = 5.0, const double& r_o = 10.0)
-{
-    double shear = 1.50 / (pow(r_o, 3) - pow(r_i, 3)) / M_PI;
-    return shear;
-}
+namespace bevameter {
+  struct bevameter
+  {
+    double h{0};
+    double d{0};
+    double m{0};
+  };
 
+  double getShear_h(const bevameter& a, const bevameter& b);
+  double getShear_v(const bevameter& a, const bevameter& b);
+};

@@ -37,4 +37,3 @@
 #include<cmath>
 
 double getTauMax(const double& m, const double& h, const double& d);
-}
