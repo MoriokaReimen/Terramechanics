@@ -34,6 +34,7 @@
 -----------------------------------------------------------------------------
 */
 #include "bevameter.hpp"
+#include "angle.hpp"
 #include <boost/python.hpp>
 using namespace boost::python;
 
@@ -43,6 +44,10 @@ class pybevameter{};
 
 BOOST_PYTHON_MODULE(pyterramechanics)
 {
+  /* define angle manupulation functions */
+  def("degToRad", degToRad);
+  def("radToDeg", radToDeg);
+
   /* define bevameter functions */
   {
     scope bevameter = class_<pybevameter>("pybevameter");

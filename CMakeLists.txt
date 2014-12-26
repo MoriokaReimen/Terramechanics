@@ -17,6 +17,7 @@ set_target_properties(terramecha-share PROPERTIES COMPILE_FLAGS "-DPIC")
 target_link_libraries(terramecha-share gsl)
 add_library(pyterramechanics MODULE
   src/pyterramechanics.cpp
+  src/angle.cpp
   src/bevameter.cpp)
 set_target_properties(pyterramechanics PROPERTIES COMPILE_FLAGS "-fPIC -DPIC")
 set_target_properties(pyterramechanics PROPERTIES PREFIX "")
