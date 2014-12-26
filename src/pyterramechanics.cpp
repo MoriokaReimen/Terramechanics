@@ -43,12 +43,15 @@ class pybevameter{};
 
 BOOST_PYTHON_MODULE(pyterramechanics)
 {
-  scope bevameter = class_<pybevameter>("pybevameter");
-  class_<bevameter::bevameter>("bevameter")
-    .def_readwrite("h", &bevameter::bevameter::h)
-    .def_readwrite("d", &bevameter::bevameter::d)
-    .def_readwrite("m", &bevameter::bevameter::m);
-  def("getShear_h", bevameter::getShear_h);
-  def("getShear_v", bevameter::getShear_v);
+  /* define bevameter functions */
+  {
+    scope bevameter = class_<pybevameter>("pybevameter");
+    class_<bevameter::bevameter>("bevameter")
+      .def_readwrite("h", &bevameter::bevameter::h)
+      .def_readwrite("d", &bevameter::bevameter::d)
+      .def_readwrite("m", &bevameter::bevameter::m);
+    def("getShear_h", bevameter::getShear_h);
+    def("getShear_v", bevameter::getShear_v);
+  }
 }
 
