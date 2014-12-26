@@ -21,4 +21,5 @@ add_library(pyterramechanics MODULE
   src/bevameter.cpp)
 set_target_properties(pyterramechanics PROPERTIES COMPILE_FLAGS "-fPIC -DPIC")
 set_target_properties(pyterramechanics PROPERTIES PREFIX "")
+set_target_properties(pyterramechanics PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/python")
 target_link_libraries(pyterramechanics boost_python python2.7)
